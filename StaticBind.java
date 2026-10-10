@@ -1,14 +1,31 @@
+import java.util.Scanner;
+
 public class StaticBind {
     public static void main(String[] args) {
-        Cat cat = new Cat();
-        Duck duck = new Duck();
-        Puppy puppy = new Puppy();
+        Scanner sc = new Scanner(System.in);
+        System.out.print("1:Cat 2:Duck 3:Puppy 선택> ");
+        int no = sc.nextInt();
 
-        cat.Start();
-        cat.Stop();
-        duck.Start();
-        duck.Stop();
-        puppy.Start();
-        puppy.Stop();
+        switch (no) {
+            case 1:
+                Cat cat = new Cat();
+                cat.Start();
+                cat.Stop();
+                break;
+            case 2:
+                Duck duck = new Duck();
+                duck.Start();
+                duck.Stop();
+                break;
+            case 3:
+                Puppy puppy = new Puppy();
+                puppy.Start();
+                puppy.Stop();
+                break;
+            default:
+                System.out.println("잘못된 번호입니다: " + no);
+        }
+
+        sc.close();
     }
 }
