@@ -1,5 +1,5 @@
 public abstract class My {
-    public My() {
+    public void prn() {
         System.out.println("I'm a member of abstract class");
     }
 
