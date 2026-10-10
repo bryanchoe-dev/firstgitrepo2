@@ -1,7 +1,7 @@
 public class StaticInitTest {
     static int i = 10;
 
-    public StaticInitTest() {
+    static {
         System.out.println("Static i=" + i++);
     }
 
