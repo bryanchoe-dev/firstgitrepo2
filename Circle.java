@@ -7,6 +7,6 @@ public class Circle implements IShape {
 
     @Override
     public void Draw() {
-        System.out.println("Circle Draw: type=" + type + ", color=" + color);
+        System.out.println(color + "의 " + type + "을 그립니다");
     }
 }

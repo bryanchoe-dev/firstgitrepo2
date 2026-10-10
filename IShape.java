@@ -1,5 +1,5 @@
 public interface IShape {
-    String color = "black";
+    String color = "red";
 
     void Draw();
 }
