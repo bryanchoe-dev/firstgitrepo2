@@ -7,10 +7,18 @@ public class Chap18DoIt {
     Runnable runner = new MyRunnable("First");
     Thread t = new Thread(runner);
     t.setPriority(Thread.MIN_PRIORITY);
-    t.start();
     Runnable runner2 = new MyRunnable("Second");   // ①
     Thread t2 = new Thread(runner2);               // ②
     t2.setPriority(Thread.MAX_PRIORITY);           // ③
+
+    System.out.println("main priority : " + Thread.currentThread().getPriority()
+        + " (NORM_PRIORITY = " + Thread.NORM_PRIORITY + ")");
+    System.out.println("First priority : " + t.getPriority()
+        + " (MIN_PRIORITY = " + Thread.MIN_PRIORITY + ")");
+    System.out.println("Second priority : " + t2.getPriority()
+        + " (MAX_PRIORITY = " + Thread.MAX_PRIORITY + ")");
+
+    t.start();
     t2.start();                                    // ④
   }
 }
