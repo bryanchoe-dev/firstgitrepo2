@@ -15,13 +15,34 @@ public class Chap18DoIt {
   }
 }
 class MyRunnable implements Runnable {
+  private static final int THREADS = 2;      // number of threads taking turns
+  private static final Object lock = new Object();
+  private static int turn = 0;               // whose turn it is: 0, 1, 0, 1, ...
+  private static int created = 0;
+
   protected String name;
+  private int id;                            // First = 0, Second = 1
+
   public MyRunnable(String tn) {
     name = tn;
+    synchronized (lock) {
+      id = created++;
+    }
   }
   public void run() {
     for(int i=0;i<=10 ;i++) {
-      System.out.println(name+" : "+ i);
+      synchronized (lock) {
+        while (turn % THREADS != id) {
+          try {
+            lock.wait();
+          } catch (InterruptedException e) {
+            return;
+          }
+        }
+        System.out.println(name+" :"+ i);
+        turn++;
+        lock.notifyAll();
+      }
     }
   }
 }
